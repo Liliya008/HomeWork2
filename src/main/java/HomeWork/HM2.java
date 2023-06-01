@@ -158,7 +158,7 @@ Click Process button
         WebElement orderButton = driver.findElement(By.xpath("//a[.='Order']"));
         orderButton.click();
         WebElement selectProduct= driver.findElement(By.xpath("//select"));
-        BrowserUtils.selectBy(selectProduct,"MyMoney", "value");
+        BrowserUtils.selectBy(selectProduct,"ScreenSaver", "value");
         WebElement quantity = driver.findElement(By.xpath("//input[@onChange='productsChanged()']"));
         quantity.clear();
         quantity.sendKeys("5");
@@ -192,7 +192,7 @@ matching with new order
         WebElement viewAllOrdersButton = driver.findElement(By.xpath("//a[.='View all orders']"));
         viewAllOrdersButton.click();
         WebElement actualNewOrder=driver.findElement(By.xpath("//tr[2]"));
-        String expectedNewOrder="CodeFish IT School MyMoney 5 06/01/2023 2200 E devon Des Plaines Illinois 60018 MasterCard 444993876233 03/24";
+        String expectedNewOrder="CodeFish IT School ScreenSaver 5 06/01/2023 2200 E devon Des Plaines Illinois 60018 MasterCard 444993876233 03/24";
                 Assert.assertEquals(BrowserUtils.getText(actualNewOrder),expectedNewOrder);
 
     }
