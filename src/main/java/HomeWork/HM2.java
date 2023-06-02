@@ -10,6 +10,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 
 import java.time.Duration;
+import java.util.Arrays;
+import java.util.List;
 
 public class HM2 {
     /*
@@ -191,9 +193,12 @@ matching with new order
         Assert.assertEquals(BrowserUtils.getText(successfulOrder),"New order has been successfully added.");
         WebElement viewAllOrdersButton = driver.findElement(By.xpath("//a[.='View all orders']"));
         viewAllOrdersButton.click();
-        WebElement actualNewOrder=driver.findElement(By.xpath("//tr[2]"));
-        String expectedNewOrder="CodeFish IT School ScreenSaver 5 06/01/2023 2200 E devon Des Plaines Illinois 60018 MasterCard 444993876233 03/24";
-                Assert.assertEquals(BrowserUtils.getText(actualNewOrder),expectedNewOrder);
+        List<WebElement> actualOrder=driver.findElements(By.xpath("//tr[2]//td"));
+        List<String> expectedOrder=Arrays.asList("CodeFish IT School","ScreenSaver","5","06/02/2023","2200 E devon", "Des Plaines","Illinois","60018","MasterCard","444993876233","03/24");
+        for (int i = 1,j=0; i <actualOrder.size()-1 ; i++,j++) {
+
+            Assert.assertEquals(BrowserUtils.getText(actualOrder.get(i)),expectedOrder.get(j));
+        }
 
     }
 }
